@@ -1,0 +1,20 @@
+LOCAL_PATH := $(call my-dir)
+
+
+include $(CLEAR_VARS)
+LOCAL_MODULE:= udt
+LOCAL_SRC_FILES:= lib/libudt.so
+LOCAL_EXPORT_C_INCLUDES:= $(LOCAL_PATH)/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_CPP_EXTENSION:=.cpp
+include $(CLEAR_VARS)
+PATH_TO_UDT_SOURCE:=./include/
+PATH_TO_LIBUDT_SO:=./lib/
+LOCAL_C_INCLUDES += $(PATH_TO_UDT_SOURCE)
+LOCAL_LDLIBS := -llog
+LOCAL_SHARED_LIBRARIES := udt
+LOCAL_MODULE    := recvfile
+LOCAL_SRC_FILES := recvfile.cpp
+include $(BUILD_SHARED_LIBRARY)
